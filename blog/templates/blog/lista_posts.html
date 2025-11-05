@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% block title %}Listado de Posts{% endblock %}
+{% block content %}
+  <h2>Listado de Posts</h2>
+
+  <form method="get">
+    <input type="text" name="buscar" placeholder="Buscar...">
+    <button type="submit">Buscar</button>
+  </form>
+
+  <ul>
+    {% for post in posts %}
+      <li>{{ post.titulo }} - {{ post.autor }} ({{ post.fecha }})</li>
+    {% empty %}
+      <li>No hay publicaciones.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
