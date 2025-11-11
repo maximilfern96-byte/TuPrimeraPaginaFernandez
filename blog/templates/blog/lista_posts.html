@@ -1,18 +1,31 @@
 {% extends 'blog/base.html' %}
-{% block title %}Listado de Posts{% endblock %}
+{% load static %}
+
 {% block content %}
+<div class="listado-container">
   <h2>Listado de Posts</h2>
 
-  <form method="get">
-    <input type="text" name="buscar" placeholder="Buscar...">
-    <button type="submit">Buscar</button>
+  <form method="get" action="{% url 'listado' %}">
+    <input type="text" name="q" placeholder="Buscar por título..." value="{{ request.GET.q }}">
+    <button type="submit" class="btn-principal">Buscar</button>
   </form>
 
-  <ul>
+  <hr>
+
+  {% if posts %}
     {% for post in posts %}
-      <li>{{ post.titulo }} - {{ post.autor }} ({{ post.fecha }})</li>
-    {% empty %}
-      <li>No hay publicaciones.</li>
+      <div class="post-card">
+        <a href="{% url 'detalle_post' post.pk %}">{{ post.titulo }}</a>
+        <p><strong>Categoría:</strong> {{ post.categoria }}</p>
+        <p><strong>Autor:</strong> {{ post.autor }}</p>
+      </div>
     {% endfor %}
-  </ul>
+  {% else %}
+    <p class="no-resultados">No se encontraron resultados.</p>
+  {% endif %}
+
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="{% url 'inicio' %}" class="btn-inicio">← Volver al inicio</a>
+  </div>
+</div>
 {% endblock %}
