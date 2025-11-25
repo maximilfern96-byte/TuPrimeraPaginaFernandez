@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="titulo-seccion">Crear Nuevo Post</h2>
+
+<form method="POST" enctype="multipart/form-data" class="form-crear-post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn-principal">Crear</button>
+</form>
+
+<a href="{% url 'lista_posts' %}" class="btn-volver">Volver al listado</a>
+{% endblock %}

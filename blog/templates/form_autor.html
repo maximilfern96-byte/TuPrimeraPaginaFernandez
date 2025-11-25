@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Nuevo Autor{% endblock %}
+
+{% block content %}
+  <h2 class="titulo-seccion">Nuevo Autor</h2>
+
+  <form method="POST" class="form-crear-post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-principal">Guardar</button>
+  </form>
+
+  <div style="margin-top: 20px;">
+    <a href="{% url 'inicio' %}" class="btn-volver">← Volver al inicio</a>
+  </div>
+{% endblock %}

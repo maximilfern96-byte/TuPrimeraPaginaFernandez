@@ -1,7 +1,8 @@
-{% extends 'blog/base.html' %}
+{% extends "base.html" %}
 {% block content %}
 <div class="container">
     <h1>Posts de la categoría: {{ categoria.nombre }}</h1>
+    
     <ul>
         {% for post in posts %}
             <li>
@@ -12,6 +13,6 @@
         {% endfor %}
     </ul>
 
-    <a href="{% url 'listado' %}" class="btn-volver">Volver al listado</a>
+    <a href="{% url 'lista_posts' %}" class="btn-volver">← Volver al listado</a>
 </div>
 {% endblock %}

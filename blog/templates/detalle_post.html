@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="detalle-container">
+
+    <h2>{{ post.titulo }}</h2>
+
+    <p><strong>Autor:</strong> {{ post.autor }}</p>
+    <p><strong>Categoría:</strong> {{ post.categoria }}</p>
+
+    <hr>
+
+    <div class="contenido-post">
+        {{ post.contenido|safe }}
+    </div>
+
+    <div class="volver-listado">
+        <a href="{% url 'lista_posts' %}" class="btn-volver">← Volver al listado</a>
+    </div>
+
+</div>
+{% endblock %}
